@@ -1,6 +1,8 @@
 package arrays;
 
-import java.util.Arrays;
+import stacks.StackImpl;
+
+import java.util.*;
 
 /**
  * Created by kanunso on 1/23/17.
@@ -9,15 +11,106 @@ public class ArrayImpl {
     public static void main(String args[]){
 
         ArrayImpl arrayImpl = new ArrayImpl();
+        /*
         System.out.println(arrayImpl.hasUniqueChar("dfesagD"));
         int[][] a = {{1,1,2,3,4},{1,1,1,1,1},{2,2,0,2,2},{3,3,3,3,3},{4,4,4,4,4}};
 
         //arrayImpl.flipTheMatrix(a);
         //arrayImpl.printMatrix(a);
-        int [][] out = arrayImpl.mineSweep(a);
-        arrayImpl.printMatrix(out);
+        //int [][] out = arrayImpl.mineSweep(a);
+        //arrayImpl.printMatrix(out);
+
+        int [] nums = {8, 2, 7, 11, 15};
+        int target = 9;
+
+        for(int i : arrayImpl.pairIndex(nums, target)){
+            System.out.print(i+", ");
+        }
 
 
+        HashSet<String> out = arrayImpl.getParanthesis(3);
+
+        for(String s: out){
+            System.out.println("s = " + s);
+        }
+
+*/
+        System.out.println(arrayImpl.validParanthesis("[]"));
+
+
+    }
+
+    public HashSet getParanthesis(int n){
+        HashSet<String> output = new HashSet<String>();
+
+        if(n==0){
+            return output;
+        }
+
+        if(n==1){
+            output.add("()");
+            return output;
+        }
+        HashSet<String> n_1Output = getParanthesis(n-1);
+
+        for(String s: n_1Output){
+            String preout = "()".concat(s);
+            output.add(preout);
+
+            String midout = "(".concat(s).concat(")");
+            output.add(midout);
+
+            String postout = s.concat("()");
+            output.add(postout);
+        }
+    return output;
+    }
+
+    public boolean validParanthesis(String input){
+        boolean flag = false;
+        char [] inputArray = input.toCharArray();
+        StackImpl<String> paraStack = new StackImpl<String>();
+        HashMap<String, String> bracketDict = new HashMap<String, String>();
+        bracketDict.put(")","(");
+        bracketDict.put("}","{");
+        bracketDict.put("]","[");
+
+        System.out.println(bracketDict.get(")"));
+        System.out.println(bracketDict.get("}"));
+        System.out.println(bracketDict.get("]"));
+
+        for(Character c : inputArray){
+            String top = paraStack.peek();
+            System.out.print(top);
+            System.out.print(bracketDict.get(top));
+            if(c.toString().equals(bracketDict.get(top))){
+                flag = true;
+                paraStack.pop();
+            } else{
+                flag = false;
+                paraStack.push(c.toString());
+                //System.out.println("Here");
+            }
+        }
+        return paraStack.isEmpty() && flag;
+    }
+
+
+
+
+
+    public int [] pairIndex(int [] input, int target){
+        HashMap<Integer,Integer> inputhash = new HashMap<Integer, Integer>();
+        int [] out = new int[2];
+        for(int i=0; i<=input.length-1; i++){
+            if(inputhash.containsKey(target-input[i])){
+                out[0] = inputhash.get(target-input[i]);
+                out[1] = i;
+            } else{
+                inputhash.put(input[i], i);
+            }
+        }
+        return out;
     }
 
 

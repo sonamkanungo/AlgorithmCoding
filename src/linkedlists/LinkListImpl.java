@@ -269,4 +269,23 @@ public class LinkListImpl {
 
     }
 
+    /*
+    public boolean isPalindrom(Node temp, Node start){
+        if(temp.next ==null){
+            return temp;
+        }
+
+        boolean flag = false;
+
+        Node t =  isPalindrom(temp.next, start);
+
+        if(t.data == start.data){
+            flag == true;
+        }
+        return temp;
+
+
+    }
+    */
+
 }
