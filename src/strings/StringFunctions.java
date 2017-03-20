@@ -45,6 +45,22 @@ public class StringFunctions {
     }
 
 
+    //bananas
+
+
+    public void palandromSubString(String input){
+
+
+
+
+
+
+    }
+
+
+
+
+
     public void reverseString(String input){
 
         System.out.println();

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class DynamicMatrixImpl {
     int r = 3;
     int c = 3;
+
     public int[][] matrix = new int[r][c];
 
     public int[][] memo = new int[r][c];
@@ -46,7 +47,6 @@ public class DynamicMatrixImpl {
                 goUp = true;
                 continue;
             }
-
             if(goUp){
                 row++;
                 column++;
@@ -57,7 +57,6 @@ public class DynamicMatrixImpl {
                 continue;
             }
         }
-
     }
 
 
