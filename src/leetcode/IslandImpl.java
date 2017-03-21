@@ -10,10 +10,10 @@ public class IslandImpl {
         IslandImpl island = new IslandImpl();
 
         int [][] matrix = {{1,1,1,1,0},{1,1,1,1,0},{1,1,0,1,0},{1,1,0,0,0},{0,0,1,0,1}};
-        int out = island.numberofIsland(matrix);
+        //int out = island.numberofIsland(matrix);
         //System.out.println("out = " + out);
 
-
+        /*
         char [][] region = {{'X', 'X', 'X', 'X'},{'X', '0', '0', 'X'},{'X', 'X', '0', '0'},{'X', '0', 'X', 'X'}};
         boolean [][]visited = new boolean[4][4];
         island.captureRegion(region,visited);
@@ -24,6 +24,18 @@ public class IslandImpl {
             }
             System.out.println();
         }
+        */
+
+        int input[][]= {{0,1,0,0},{1,1,1,0},{0,1,0,0},{1,1,0,0}};
+        for(int i =0; i<=input.length-1; i++){
+            for(int j=0; j<=input[0].length-1;j++){
+                System.out.print(input[i][j]);
+            }
+            System.out.println();
+        }
+
+        island.findIslandPerimeter(input);
+
 
 
     }
@@ -148,5 +160,76 @@ public class IslandImpl {
         //       4.
 
     }
+
+
+    public void findIslandPerimeter(int [][] input){
+        int out = 0;
+        for(int i=0; i<=input.length-1; i++){
+            for(int j=0; j<=input[0].length-1; j++){
+                if(input[i][j]==1){
+                    out = islandPerimeter(input, i,j);
+                    break;
+                }
+            }
+        }
+        System.out.println("out = " + out);
+
+    }
+
+
+    public int islandPerimeter(int[][] input, int i, int j){
+        input[i][j]=2;
+        int prev =1, next =1, up =1, down=1;
+
+
+        if(i>=0 && j-1>=0 && i<=input[0].length-1 && j-1<=input.length-1){
+            if(input[i][j-1] ==1){
+                prev = islandPerimeter(input,i,j-1);
+            } else if(input[i][j-1]==2){
+                prev = 0;
+            }else{
+                prev =1;
+            }
+        }
+
+        // next i, j+1
+        if(i>=0 && j+1>=0 && i<=input[0].length-1 && j+1<=input.length-1){
+            if(input[i][j+1] ==1){
+                next = islandPerimeter(input,i,j+1);
+            }else if(input[i][j+1] ==2){
+                next = 0;
+            }else{
+                next =1;
+            }
+        }
+
+        // up i-1,j
+        if(i-1>=0 && j>=0 && i-1<=input[0].length-1 && j<=input.length-1){
+            if(input[i-1][j] ==1){
+                up = islandPerimeter(input,i-1, j);
+            }else if(input[i-1][j] ==2){
+                up = 0;
+            } else{
+                up=1;
+            }
+        }
+
+
+        //down i+1, j
+        if(i+1>=0 && j>=0 && i+1<=input[0].length-1 && j<=input.length-1){
+            if(input[i+1][j] ==1){
+                down = islandPerimeter(input, i+1, j);
+            }else if(input[i+1][j] ==2){
+                down = 0;
+            }else{
+                down=1;
+            }
+        }
+
+        return prev+ next+ up+ down;
+
+
+    }
+
 
 }
