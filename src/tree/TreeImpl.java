@@ -1,5 +1,6 @@
 package tree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -21,11 +22,18 @@ public class TreeImpl {
         myTree.insert(12);
         myTree.insert(11);
         myTree.insert(16);
-        //myTree.insert(20);
+
+/*
+        ArrayList<String> out = myTree.getAllpathfromRoot(myTree.root);
+        for(String o: out){
+            System.out.println(o);
+        }
+
+  */      //myTree.insert(20);
         //System.out.println(myTree.root.left.left.data);
         //System.out.println(myTree.root.left.right.left.data);
-        int d = myTree.numberOfNodesBetween(myTree.root.left.left, myTree.root.left.right);
-        System.out.print("Distance is : "+ d);
+        //int d = myTree.numberOfNodesBetween(myTree.root.left.left, myTree.root.left.right);
+        //System.out.print("Distance is : "+ d);
         //myTree.inOrderTraversal();
 
         //BST myTree1 = new BST();
@@ -34,7 +42,7 @@ public class TreeImpl {
         //myTree1.insert(11);
         //myTree1.insert(4);
         //myTree1.insert(2);
-        myTree.preOrderTraversal();
+        //myTree.preOrderTraversal();
         //myTree.inOrderTraversal();
         //myTree.postOrderTraversal();
         //myTree.delete(15);
@@ -50,7 +58,7 @@ public class TreeImpl {
         //System.out.println(myTree.areTreeMatching(myTree.root,myTree1.root));
         //int [] array = new int[1];
         //myTree.getSum(myTree.root, array, 48, 0, 0);
-        //myTree.printEachLevelofTree();
+        myTree.printEachLevelofTree();
 
         //myTree.inOrderSuccessor(4);
 

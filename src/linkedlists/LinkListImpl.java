@@ -5,7 +5,7 @@ package linkedlists;
  */
 public class LinkListImpl {
 
-    Node top;
+    public Node top;
 
     public void insert(int data) {
         Node newNode = new Node(data);
@@ -267,6 +267,18 @@ public class LinkListImpl {
             temp = temp.next;
         }
 
+    }
+
+
+    public Node reverseLinkedList(Node temp, Node oldTop){
+        if(temp.next==null){
+            oldTop.next=null;
+            top = temp;
+            return temp;
+        }
+        Node t = reverseLinkedList(temp.next, top);
+        t.next = temp;
+        return temp;
     }
 
     /*

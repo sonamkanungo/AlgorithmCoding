@@ -560,6 +560,35 @@ public class BST {
 
 
 
+    public ArrayList<String> getAllpathfromRoot(Node temp){
+        ArrayList<String> out = new ArrayList<String>();
+        if(temp.left == null && temp.right == null){
+            int o = temp.data;
+            out.add(Integer.valueOf(o).toString());
+            return out;
+        }
+        ArrayList<String>left = new ArrayList<String>();
+        ArrayList<String>right = new ArrayList<String>();
+        if(temp.left!=null){
+            left = getAllpathfromRoot(temp.left);
+            for(String o : left){
+                String s = Integer.valueOf(temp.data).toString().concat(" <= ").concat(o);
+                out.add(s);
+            }
+        }
+        if(temp.right!=null){
+            right = getAllpathfromRoot(temp.right);
+            for(String o : right){
+                String s = Integer.valueOf(temp.data).toString().concat(" <= ").concat(o);
+                out.add(s);
+            }
+        }
+        return out;
+    }
+
+
+
+
 
 
 

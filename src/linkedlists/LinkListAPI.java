@@ -14,6 +14,10 @@ public class LinkListAPI {
         linkListImpl.insert(4);
         linkListImpl.insert(5);
         linkListImpl.insert(10);
+        System.out.println(linkListImpl);
+
+        linkListImpl.reverseLinkedList(linkListImpl.top, linkListImpl.top);
+
 
 
         System.out.println(linkListImpl);
